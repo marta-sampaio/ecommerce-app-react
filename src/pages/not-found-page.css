@@ -1,0 +1,32 @@
+#root, .App {
+  height: 100vh;
+}
+
+.container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: fit-content;
+  min-height: 100%;
+  background-color: #000;
+}
+
+img {
+  max-width: 50%;
+}
+
+.card {
+  text-align: center;
+  color: #fff;
+}
+
+.btn {
+  padding: 0.5rem;
+  background-color: rgb(194, 2, 194);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #000;
+  border-radius: 0.5rem;
+}
