@@ -10,6 +10,7 @@ export default function NotFound() {
       <img
         src={image}
         alt="404 error illustration showing ghosts"
+        className="img-error"
       />
       <div className="card">
         <h1>Oops!</h1>

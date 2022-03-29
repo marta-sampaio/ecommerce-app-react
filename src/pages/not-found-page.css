@@ -1,6 +1,6 @@
-#root, .App {
+/* #root, .App {
   height: 100vh;
-}
+} */
 
 .container {
   display:flex;
@@ -12,7 +12,7 @@
   background-color: #000;
 }
 
-img {
+.img-error {
   max-width: 50%;
 }
 
