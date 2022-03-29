@@ -1,0 +1,105 @@
+
+.grid {
+  display: grid;
+} 
+
+.flex {
+  display: flex;
+}
+
+.main-wrapper {
+  margin: 2rem 11rem;
+  color: #222222;
+}
+
+.results-header {
+  /* grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 2rem; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.results-header > h1 {
+  font-family: 'Guardian-EgypTT',Charter,'Charter Bitstream',Cambria,'Noto Serif Light','Droid Serif',Georgia,serif;
+  font-size: 2.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+} 
+
+
+.btn-wrapper {
+  justify-content: flex-end;
+  padding: 1rem;
+
+}
+
+.btn1 {
+  padding-right: 6rem;
+}
+
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  /* grid-auto-rows: minmax(15rem, 25rem); */
+  gap: 4rem;
+}
+
+.product-card > .img-wrapper:hover {
+  border: 10px solid white;
+} 
+
+.grid-item:hover {
+  cursor: pointer;
+} 
+
+
+.product-card {
+  /* flex-direction: column; */
+  margin: 1rem;
+  text-align: center;
+  color: #B29675;
+}
+
+.product-card > .img-wrapper {
+  height: 20rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: #d4c0a8 solid 1px;
+  border-radius: 1rem;
+}
+
+.product-card > .img-wrapper > img {
+  /* width: 100%;
+  max-width: 15rem;
+  height: auto; */
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  max-height: min-content;
+}
+
+.product-card > h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #3A322B;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 3rem;
+}
+
+.product-card > .price {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.product-card > .rating {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
