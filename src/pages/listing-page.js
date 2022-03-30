@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductCard, Select, Sorting } from '../components/';
-import fetchDataStore from '../api/fetch-data';
 import './listing-page.css';
+
+import fetchDataStore from '../api/fetch-data';
 import data from '../api/data';
 
 
@@ -24,12 +26,12 @@ export default function Listing() {
    useEffect(() => {
      fetchDataStore('')
        .then(prodList => setProdList(prodList))
-       .catch(err => { console.log('Promisse 1 rejected.', err.message) });
+       .catch(err => { console.log('Promisse rejected.', err.message) });
      setOptions([...new Set(prodList.map(product => product.category))]);
    }
      , []);
- 
  */
+
 
   useEffect(() => {
     setProdList(data);
@@ -50,7 +52,6 @@ export default function Listing() {
 
     setSelectedSorting('none,none')
   };
-
 
 
   function sortList(value, selectedSorting) {
@@ -90,18 +91,20 @@ export default function Listing() {
       </div>
       <div className="grid-wrapper">
         {filteredList.map(({ id, title, image, price, rating }) => (
-          <div className="grid-item">
-            <div className="product-card">
-              <ProductCard
-                key={id}
-                title={title}
-                image={image}
-                price={price}
-                currency="€"
-                ratingLabel="Average rating: "
-                rating={rating}
-              />
-            </div>
+          <div key={id} className="grid-item">
+            <Link to={`product/${id}`}>
+              <div className="product-card">
+                <ProductCard
+                  key={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  currency="€"
+                  ratingLabel="Average rating: "
+                  rating={rating}
+                />
+              </div>
+            </Link>
           </div>
         ))}
       </div>
@@ -109,3 +112,10 @@ export default function Listing() {
 
   );
 };
+
+
+/*
+<Link key={id} to={routes.Product} params={{ id: { id } }}>
+ <Link to={routes.Product} state={{ id: { id } }}>
+</Link>
+*/
