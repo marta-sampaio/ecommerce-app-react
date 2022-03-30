@@ -2,13 +2,13 @@
   height: 100vh;
 } */
 
-.container {
+.error-wrapper {
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   max-height: fit-content;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: #000;
 }
 
@@ -22,11 +22,13 @@
 }
 
 .btn {
+  margin: 2rem;
   padding: 0.5rem;
   background-color: rgb(194, 2, 194);
   font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
   color: #000;
+  border: none;
   border-radius: 0.5rem;
 }
