@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ProductCard, Select, Sorting } from '../components/';
 import './listing-page.css';
 
@@ -13,25 +12,24 @@ export default function Listing() {
   const [options, setOptions] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [filteredList, setFilteredList] = useState([]);
-  const [selectedSorting, setSelectedSorting] = useState('none,none');
+  const [selectedSorting, setSelectedSorting] = useState('--');
 
   const sortOptions = [
-    { id: 1, label: '--', value: 0 },
+    { id: 1, label: '--', value: '--' },
     { id: 2, label: 'Lowest Price', value: 'asc.price' },
     { id: 3, label: 'Highest Price', value: 'desc.price' },
     { id: 4, label: 'User rating', value: 'desc.rating' }
   ];
 
   /*
-   useEffect(() => {
-     fetchDataStore('')
-       .then(prodList => setProdList(prodList))
-       .catch(err => { console.log('Promisse rejected.', err.message) });
-     setOptions([...new Set(prodList.map(product => product.category))]);
-   }
-     , []);
- */
-
+    useEffect(() => {
+      fetchDataStore('')
+        .then(prodList => setProdList(prodList))
+        .catch(err => { console.log('Promisse rejected.', err.message) });
+      setOptions([...new Set(prodList.map(product => product.category))]);
+    }
+      , []);
+  */
 
   useEffect(() => {
     setProdList(data);
@@ -69,18 +67,18 @@ export default function Listing() {
 
 
   return (
-    <div className="main-wrapper">
-      <div className="flex results-header">
+    <div className="wrapper-list-page">
+      <div className="header-btn-list">
         <h1>Find someting you like</h1>
-        <div className="flex btn-wrapper">
-          <div className="btn1">
+        <div className="wrapper-btn-list">
+          <div className="btn-1-list">
             <Select
               options={options}
               selected={selectedFilter}
               handleChange={updateFilter}
             />
           </div>
-          <div className="btn2">
+          <div className="btn-2-list">
             <Sorting
               options={sortOptions}
               selected={selectedSorting}
@@ -89,33 +87,24 @@ export default function Listing() {
           </div>
         </div>
       </div>
-      <div className="grid-wrapper">
+      <div className="wrapper-grid-list">
         {filteredList.map(({ id, title, image, price, rating }) => (
-          <div key={id} className="grid-item">
-            <Link to={`product/${id}`}>
-              <div className="product-card">
-                <ProductCard
-                  key={id}
-                  title={title}
-                  image={image}
-                  price={price}
-                  currency="€"
-                  ratingLabel="Average rating: "
-                  rating={rating}
-                />
-              </div>
-            </Link>
+          <div key={id} className="grid-item-list">
+            <ProductCard
+              id={id}
+              title={title}
+              image={image}
+              price={price}
+              currency="€"
+              ratingLabel="Average rating: "
+              rating={rating}
+            />
           </div>
-        ))}
-      </div>
-    </div>
-
+        ))
+        }
+      </div >
+    </div >
   );
 };
 
 
-/*
-<Link key={id} to={routes.Product} params={{ id: { id } }}>
- <Link to={routes.Product} state={{ id: { id } }}>
-</Link>
-*/
