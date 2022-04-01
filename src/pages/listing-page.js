@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ProductCard, Select, Sorting } from '../components/';
+import { ProductCard, Select, Sorting, Pagination } from '../components/';
 import './listing-page.css';
 
 import fetchDataStore from '../api/fetch-data';
@@ -9,17 +9,19 @@ import data from '../api/data';
 export default function Listing() {
 
   const [prodList, setProdList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [options, setOptions] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
-  const [filteredList, setFilteredList] = useState([]);
   const [selectedSorting, setSelectedSorting] = useState('--');
-
   const sortOptions = [
     { id: 1, label: '--', value: '--' },
     { id: 2, label: 'Lowest Price', value: 'asc.price' },
     { id: 3, label: 'Highest Price', value: 'desc.price' },
     { id: 4, label: 'User rating', value: 'desc.rating' }
   ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const offset = 4;
+
 
   /*
     useEffect(() => {
@@ -48,7 +50,7 @@ export default function Listing() {
     setSelectedFilter(selectedFilter);
     selectedFilter ? setFilteredList([...prodList].filter(product => product.category === selectedFilter)) : setFilteredList([...prodList]);
 
-    setSelectedSorting('none,none')
+    setSelectedSorting('--')
   };
 
 
@@ -63,6 +65,19 @@ export default function Listing() {
     }
 
     setSelectedSorting(selectedSorting);
+  };
+
+
+
+  function getPaginatedList() {
+    const startIndex = (currentPage - 1) * offset;
+    const endIndex = startIndex + offset;
+    return filteredList.slice(startIndex, endIndex);
+  };
+
+
+  function paginate(number) {
+    setCurrentPage(number);
   };
 
 
@@ -88,7 +103,7 @@ export default function Listing() {
         </div>
       </div>
       <div className="wrapper-grid-list">
-        {filteredList.map(({ id, title, image, price, rating }) => (
+        {getPaginatedList().map(({ id, title, image, price, rating }) => (
           <div key={id} className="grid-item-list">
             <ProductCard
               id={id}
@@ -103,6 +118,11 @@ export default function Listing() {
         ))
         }
       </div >
+      <Pagination
+        offset={offset}
+        totalItems={filteredList.length}
+        handleClick={paginate}
+      />
     </div >
   );
 };

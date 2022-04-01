@@ -1,0 +1,25 @@
+.wrapper-pagination {
+  margin: 2rem 0;
+}
+
+.wrapper-pagination>ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+
+.btn-pagination {
+  margin: 2rem;
+  padding: 1rem 1.4rem;
+  color: #B29675;
+  border: 1px solid #B29675;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.btn-pagination:hover {
+  color: #222;
+  background-color: #B29675;
+}
