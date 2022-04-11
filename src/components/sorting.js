@@ -1,18 +1,20 @@
 import React from 'react'
 
+
 export default function Sorting({ options, handleChange, selected }) {
-  const onChange = e => {
+  function onChange(e) {
     handleChange(e.target.value);
   };
 
   return (
-    <>
-      <label for="sorting">Sort by: </label>
+    <div>
+      <div className="select-box-label">Sort by: </div>
       <select
         onChange={onChange}
         value={selected}
         name="sorting"
         id="sorting"
+        className="select-box"
       >
         {options.map(option => {
           return (
@@ -25,6 +27,6 @@ export default function Sorting({ options, handleChange, selected }) {
           );
         })}
       </select>
-    </>
+    </div>
   )
 };

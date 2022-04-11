@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { ProductCard, Select, Sorting, Pagination } from '../components/';
+import { ProductCard, Filtering, Sorting, Pagination } from '../components/';
 import './listing-page.css';
-
-import fetchDataStore from '../api/fetch-data';
-import data from '../api/data';
+import { fetchDataStore } from '../api/fetch-data';
 
 
 export default function Listing() {
 
   const [prodList, setProdList] = useState([]);
+  const [filterOptions, setFilterOptions] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
-  const [options, setOptions] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('All');
   const [selectedSorting, setSelectedSorting] = useState('--');
   const sortOptions = [
     { id: 1, label: '--', value: '--' },
@@ -23,38 +21,30 @@ export default function Listing() {
   const offset = 4;
 
 
-  /*
-    useEffect(() => {
-      fetchDataStore('')
-        .then(prodList => setProdList(prodList))
-        .catch(err => { console.log('Promisse rejected.', err.message) });
-      setOptions([...new Set(prodList.map(product => product.category))]);
-    }
-      , []);
-  */
-
   useEffect(() => {
-    setProdList(data);
-    setOptions([...new Set(data.map(product => product.category))]);
+    fetchDataStore('')
+      .then(prodList => setProdList(prodList))
+      .catch(err => { console.log('Promisse rejected.', err.message) });
   }
     , []);
 
-
   useEffect(() => {
+    setFilterOptions([...new Set(prodList.map(product => product.category))]);
     setFilteredList([...prodList]);
   }
     , [prodList]);
 
 
-  function updateFilter(selectedFilter) {
+  function handleFilter(selectedFilter) {
     setSelectedFilter(selectedFilter);
-    selectedFilter ? setFilteredList([...prodList].filter(product => product.category === selectedFilter)) : setFilteredList([...prodList]);
+    selectedFilter === 'All' ? setFilteredList([...prodList]) : setFilteredList([...prodList].filter(product => product.category === selectedFilter));
 
-    setSelectedSorting('--')
+    setSelectedSorting('--');
+    setCurrentPage(1);
   };
 
 
-  function sortList(value, selectedSorting) {
+  function handleSort(value, selectedSorting) {
     const order = value.split('.')[0];
     const option = value.split('.')[1];
 
@@ -75,55 +65,50 @@ export default function Listing() {
     return filteredList.slice(startIndex, endIndex);
   };
 
-
-  function paginate(number) {
+  function handlePagination(number) {
     setCurrentPage(number);
   };
 
 
   return (
-    <div className="wrapper-list-page">
-      <div className="header-btn-list">
-        <h1>Find someting you like</h1>
-        <div className="wrapper-btn-list">
-          <div className="btn-1-list">
-            <Select
-              options={options}
-              selected={selectedFilter}
-              handleChange={updateFilter}
-            />
-          </div>
-          <div className="btn-2-list">
-            <Sorting
-              options={sortOptions}
-              selected={selectedSorting}
-              handleChange={sortList}
-            />
-          </div>
+    <main className="wrapper-listing">
+      <div className="header-listing">
+        <h1>Find something you like</h1>
+        <div className="wrapper-btn-listing">
+          <Filtering
+            options={filterOptions}
+            selected={selectedFilter}
+            handleChange={handleFilter}
+          />
+          <Sorting
+            options={sortOptions}
+            selected={selectedSorting}
+            handleChange={handleSort}
+          />
         </div>
       </div>
       <div className="wrapper-grid-list">
         {getPaginatedList().map(({ id, title, image, price, rating }) => (
-          <div key={id} className="grid-item-list">
-            <ProductCard
-              id={id}
-              title={title}
-              image={image}
-              price={price}
-              currency="€"
-              ratingLabel="Average rating: "
-              rating={rating}
-            />
-          </div>
+          <ProductCard
+            key={id}
+            id={id}
+            title={title}
+            image={image}
+            price={price}
+            currency="€"
+            ratingLabel="Average rating: "
+            rating={rating}
+          />
         ))
         }
       </div >
       <Pagination
         offset={offset}
         totalItems={filteredList.length}
-        handleClick={paginate}
+        handleClick={handlePagination}
+        currentPage={currentPage}
       />
-    </div >
+    </main >
   );
 };
 

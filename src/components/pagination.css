@@ -4,22 +4,40 @@
 
 .wrapper-pagination>ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   list-style: none;
 }
 
 
 .btn-pagination {
-  margin: 2rem;
+  margin: 2rem 0;
   padding: 1rem 1.4rem;
-  color: #B29675;
-  border: 1px solid #B29675;
+  color: rgb(255, 136, 17);
+  border: 1px solid rgb(255, 136, 17);
   border-radius: 50%;
   background-color: #fff;
   cursor: pointer;
 }
 
 .btn-pagination:hover {
-  color: #222;
-  background-color: #B29675;
+  background-color: rgb(247, 228, 175);
+}
+
+#active-pg {
+  font-weight: 700;
+  background-color: rgb(247, 228, 175);
+}
+
+/* =================
+media queries
+================= */
+@media screen and (min-width: 576px) {
+  .wrapper-pagination>ul {
+    justify-content: center;
+  }
+
+  .btn-pagination {
+    margin: 2rem;
+  }
+
 }

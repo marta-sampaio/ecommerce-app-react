@@ -1,65 +1,91 @@
-.wrapper-list-page {
-  margin: 0 auto;
-  color: #222;
+.wrapper-listing {
+  margin: 3rem 1rem;
 }
 
-.header-btn-list {
+
+/* =================
+Listing page header 
+================= */
+.header-listing {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 1rem;
-  margin: 2rem 0;
+  margin-bottom: 3rem;
 }
 
-.header-btn-list>h1 {
-  font-family: 'Guardian-EgypTT', Charter, 'Charter Bitstream', Cambria, 'Noto Serif Light', 'Droid Serif', Georgia, serif;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
+.header-listing>h1 {
+  padding: 0 8rem 2rem 0;
+  font-family: 'Abril Fatface', serif;
+  font-size: 2.1rem;
+  letter-spacing: 0.2rem;
+  color: rgb(57, 47, 90);
 }
 
-.wrapper-btn-list {
-  padding: 1rem;
+.wrapper-btn-listing>*:first-child {
+  padding-bottom: 2rem;
 }
 
-.btn-1-list {
-  padding-bottom: 1.6rem;
-}
-
-.wrapper-grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 4rem;
-}
-
-.grid-item-list:hover {
+/* =================
+Listing page header: components Sorting and Filtering
+================= */
+.select-box {
+  padding: 0.5rem 0;
+  color: rgb(255, 136, 17);
+  font-size: 1.2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  border: solid 1px rgb(255, 136, 17);
+  border-radius: 1.5rem;
+  outline: 0;
   cursor: pointer;
 }
 
-.grid-item-list>a {
-  text-decoration: none;
+.select-box-label {
+  font-size: 1.2rem;
+  color: rgb(57, 47, 90);
 }
+
+
+/* =================
+Listing page products 
+================= */
+.wrapper-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90vw, 1fr));
+  gap: 5rem;
+}
+
 
 
 /* =================
 media queries
 ================= */
-@media screen and (min-width: 576px) {
-  .wrapper-list-page {
-    max-width: 90%;
+/* tablets */
+@media screen and (min-width: 481px) {
+  .wrapper-listing {
+    padding: 0 6rem;
   }
 
-  .wrapper-btn-list {
+  .wrapper-grid-list {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}
+
+/* small screens */
+@media screen and (min-width: 769px) {
+  .header-listing>h1 {
+    font-size: 2.7rem;
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+  .wrapper-btn-listing {
     display: flex;
     justify-content: flex-end;
-    padding: 1rem;
   }
 
-  .btn-1-list {
-    padding-right: 6rem;
-  }
-
-  .header-btn-list>h1 {
-    font-size: 2.7rem;
+  .wrapper-btn-listing>*:first-child {
+    padding-right: 4rem;
   }
 }

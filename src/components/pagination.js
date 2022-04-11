@@ -2,7 +2,7 @@ import React from 'react';
 import './pagination.css';
 
 
-export default function Pagination({ offset, totalItems, handleClick }) {
+export default function Pagination({ offset, totalItems, handleClick, currentPage }) {
 
   const pageNumbers = [];
 
@@ -19,6 +19,7 @@ export default function Pagination({ offset, totalItems, handleClick }) {
             <button
               onClick={() => handleClick(number)}
               className="btn-pagination"
+              id={number === currentPage ? 'active-pg' : null}
             >
               {number}
             </button>
@@ -32,4 +33,7 @@ export default function Pagination({ offset, totalItems, handleClick }) {
 
 /*
   { <a onClick={() => paginate(number)} href={`?page=${number}`}>{number}</a> }
+
+
+  onClick={() => handleClick(number)}
 */
