@@ -1,0 +1,137 @@
+footer {
+  display: grid;
+  height: 100%;
+  padding: 3rem 1rem 1rem;
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: rgb(57, 47, 90);
+}
+
+footer>* {
+  margin-bottom: 2.5rem;
+}
+
+.img-logo-footer {
+  max-width: 40%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.social-i {
+  font-style: normal;
+  font-size: 2.2rem;
+  color: rgb(255, 136, 17);
+  cursor: pointer;
+}
+
+.social-i:hover {
+  border-radius: 0.5rem;
+  transform: scale(1.5);
+}
+
+.list-footer {
+  list-style: none;
+}
+
+.list-footer>li {
+  margin-top: 0.5rem;
+}
+
+.list-footer>li>a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+
+.form-newsletter {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-newsletter>p {
+  padding: 0.5rem 0;
+}
+
+.form-newsletter>input {
+  flex-grow: 1;
+  padding: 0.5em 0.75em;
+  border: 0;
+  outline: 0;
+}
+
+.form-newsletter>button {
+  padding: 0.5em 0.75em;
+  color: rgb(255, 136, 17);
+  border: 0;
+  cursor: pointer
+}
+
+
+
+/* =================
+media queries
+================= */
+/* tablets */
+@media screen and (min-width: 481px) {
+  footer {
+    grid-template-columns: 5fr 2fr;
+    grid-template-areas:
+      "social brand"
+      "newsletter help"
+      "copyrights copyrights";
+  }
+
+  .footer-social {
+    grid-area: social;
+  }
+
+
+  .social-icons>li {
+    padding-right: 10%;
+  }
+
+  .footer-brand {
+    grid-area: brand;
+  }
+
+  .footer-help {
+    grid-area: help;
+  }
+
+  .footer-newsletter {
+    grid-area: newsletter;
+  }
+
+  .footer-copyrights {
+    grid-area: copyrights;
+    text-align: center;
+  }
+}
+
+/* small screens */
+@media screen and (min-width: 769px) {
+  footer {
+    grid-template-areas:
+      "social brand help newsletter"
+      "copyrights copyrights copyrights copyrights";
+    text-align: left;
+    column-gap: 2rem;
+  }
+
+  footer>* {
+    padding: 0 2rem;
+  }
+
+  .form-newsletter {
+    justify-content: left;
+  }
+
+  .form-newsletter>input {
+    flex-grow: 1;
+  }
+}
