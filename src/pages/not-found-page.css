@@ -1,35 +1,82 @@
-/* #root, .App {
-  height: 100vh;
-} */
-
-.error-wrapper {
+.wrapper-error {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   max-height: fit-content;
   min-height: 100vh;
-  background-color: #000;
 }
 
 .img-error {
-  max-width: 50%;
+  max-width: 70vw;
 }
 
-.card {
+.card-error {
   text-align: center;
-  color: #fff;
+  color: rgb(57, 47, 90);
 }
 
-.btn {
-  margin: 2rem;
-  padding: 0.5rem;
-  background-color: rgb(194, 2, 194);
-  font-size: 0.8rem;
+.card-error>h1 {
+  padding: 2rem 0;
+  font-size: 2.7rem;
+}
+
+.card-error>p {
+  font-size: 1.5rem;
+}
+
+.btn-error {
+  display: block;
+  width: 14rem;
+  height: 4rem;
+  margin: 2rem auto;
+  background-color: rgb(255, 136, 17);
   font-weight: 700;
-  text-decoration: none;
-  color: #000;
+  font-size: 1.3rem;
+  color: rgb(57, 47, 90);
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.btn-error>a {
+  color: rgb(57, 47, 90);
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+
+/* =================
+media queries
+================= */
+/* large screens */
+@media screen and (min-width: 992px) {
+  .btn-error {
+    display: inline;
+    margin: 2rem 2.5rem;
+  }
+
+  .wrapper-error {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .img-error {
+    max-height: 90vh;
+  }
+
+  .card-error>h1 {
+    font-size: 3rem;
+  }
+
+  .card-error>p {
+    font-size: 1.9rem;
+  }
+
+  .btn-error {
+    height: 5rem;
+    width: 16rem;
+    margin-top: 3rem;
+    font-size: 1.4rem;
+  }
 }
