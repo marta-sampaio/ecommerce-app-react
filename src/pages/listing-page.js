@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useHistory } from "react-router-dom";
+import routes from '../routes';
 import { ProductCard, Filtering, Sorting, Pagination } from '../components/';
 import './listing-page.css';
 import { fetchDataStore } from '../api/fetch-data';
@@ -6,10 +8,9 @@ import { fetchDataStore } from '../api/fetch-data';
 
 export default function Listing() {
 
-  const [prodList, setProdList] = useState([]);
-  const [filterOptions, setFilterOptions] = useState([]);
+  const history = useHistory();
+  const prodList = useRef([]);
   const [filteredList, setFilteredList] = useState([]);
-  const [selectedFilter, setSelectedFilter] = useState('All');
   const [selectedSorting, setSelectedSorting] = useState('--');
   const sortOptions = [
     { id: 1, label: '--', value: '--' },
@@ -23,24 +24,21 @@ export default function Listing() {
 
   useEffect(() => {
     fetchDataStore('')
-      .then(prodList => setProdList(prodList))
+      .then(json => {
+        prodList.current = json;
+        setFilteredList(json);
+      })
       .catch(err => { console.log('Promisse rejected.', err.message) });
   }
     , []);
 
-  useEffect(() => {
-    setFilterOptions([...new Set(prodList.map(product => product.category))]);
-    setFilteredList([...prodList]);
-  }
-    , [prodList]);
-
 
   function handleFilter(selectedFilter) {
-    setSelectedFilter(selectedFilter);
-    selectedFilter === 'All' ? setFilteredList([...prodList]) : setFilteredList([...prodList].filter(product => product.category === selectedFilter));
+    selectedFilter === 'all' ? setFilteredList(prodList.current) : setFilteredList(prodList.current.filter(product => product.category === selectedFilter));
 
     setSelectedSorting('--');
     setCurrentPage(1);
+    history.push(`${routes.Listing}${selectedFilter}`);
   };
 
 
@@ -72,12 +70,11 @@ export default function Listing() {
 
   return (
     <main className="wrapper-listing">
+      {console.log(prodList)}
       <div className="header-listing">
         <h1>Find something you like</h1>
         <div className="wrapper-btn-listing">
           <Filtering
-            options={filterOptions}
-            selected={selectedFilter}
             handleChange={handleFilter}
           />
           <Sorting

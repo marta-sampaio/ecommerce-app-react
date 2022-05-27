@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import routes from './routes';
 import { Login, NotFound, Listing, Product } from './pages';
 import { Header, Footer } from './components';
@@ -20,10 +20,13 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path={routes.Product} children={<Product />} />
+          <Route exact path={`${routes.Product}:id([+-]?[0-9]+)`} children={<Product />} />
           <Route path={routes.Login} children={<Login />} />
           <Route path={routes.Listing} children={<Listing />} />
-          <Route exact path="/" children={<Listing />} />
+          <Route path={`${routes.Listing}:filter`} children={<Listing />} />
+          <Route path='/'>
+            <Redirect to={routes.Listing} />
+          </Route>
           <Route path={routes.NotFound} children={<NotFound />} />
         </Switch>
         <Footer />

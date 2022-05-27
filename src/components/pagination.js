@@ -29,11 +29,3 @@ export default function Pagination({ offset, totalItems, handleClick, currentPag
     </nav>
   );
 };
-
-
-/*
-  { <a onClick={() => paginate(number)} href={`?page=${number}`}>{number}</a> }
-
-
-  onClick={() => handleClick(number)}
-*/

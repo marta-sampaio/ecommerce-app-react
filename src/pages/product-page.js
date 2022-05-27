@@ -18,7 +18,7 @@ export default function Product() {
   }
     , [id]);
 
-  const back = e => {
+  function back(e) {
     e.stopPropagation();
     history.goBack();
   };

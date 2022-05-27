@@ -29,8 +29,13 @@ export default function Login() {
       });
   };
 
-  function handleOnChange(e) {
-    setUsername(e.target.value)
+
+  function handleUserChange({ target: { value } }) {
+    setUsername(value)
+  };
+
+  function handlePassChange({ target: { value } }) {
+    setPassword(value)
   };
 
 
@@ -42,7 +47,7 @@ export default function Login() {
         className="login-form"
       >
         <input
-          onChange={handleOnChange}
+          onChange={handleUserChange}
           type="text"
           name="username"
           value={username}
@@ -51,7 +56,7 @@ export default function Login() {
           id="username"
         />
         <input
-          onChange={({ target }) => setPassword(target.value)}
+          onChange={handlePassChange}
           type="password"
           name="password"
           value={password}

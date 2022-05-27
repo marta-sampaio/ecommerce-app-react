@@ -1,7 +1,7 @@
 const routes = {
   Login: '/login',
-  Listing: '/listing',
-  Product: '/product/:id([+-]?[0-9]+)',
+  Listing: '/listing/',
+  Product: '/product/',
   NotFound: '*'
 };
 
