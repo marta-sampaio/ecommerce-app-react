@@ -24,7 +24,7 @@ function App() {
           <Route path={routes.Login} children={<Login />} />
           <Route path={routes.Listing} children={<Listing />} />
           <Route path={`${routes.Listing}:filter`} children={<Listing />} />
-          <Route path='/'>
+          <Route exact path='/'>
             <Redirect to={routes.Listing} />
           </Route>
           <Route path={routes.NotFound} children={<NotFound />} />
