@@ -38,9 +38,14 @@ export default function Login() {
     setPassword(value)
   };
 
+  function back(e) {
+    e.stopPropagation();
+    history.goBack();
+  };
 
   return (
     <main className="wrapper-login">
+
       <h1>Account Login</h1>
       <form
         onSubmit={handleSubmit}
@@ -66,6 +71,13 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form >
+      <button
+        onClick={back}
+        type="button"
+        className="btn-return"
+      >
+        <span>&#171; </span><span> Go back</span>
+      </button>
       {errorMsg &&
         <p className="login-error-msg">Wrong username/password. Please try again.</p>
       }
