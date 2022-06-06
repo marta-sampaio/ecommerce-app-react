@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import routes from '../routes';
-import { ProductCard, Filtering, Sorting, Pagination } from '../components/';
+import { ProductCard, Filtering, Sorting, Pagination, Spinner } from '../components/';
 import { fetchDataStore } from '../api/fetch-data';
 import style from './listing-page.module.scss';
 
@@ -69,6 +69,8 @@ export default function Listing() {
 
 
   return (
+
+
     <main className={style.main}>
       <section className={style.header}>
         <h1>Find something you like</h1>
@@ -83,21 +85,26 @@ export default function Listing() {
           />
         </div>
       </section>
-      <section className={style.listWrapper}>
-        {getPaginatedList().map(({ id, title, image, price, rating }) => (
-          <ProductCard
-            key={id}
-            id={id}
-            title={title}
-            image={image}
-            price={price}
-            currency="€"
-            ratingLabel="Average rating: "
-            rating={rating}
-          />
-        ))
-        }
-      </section >
+      {getPaginatedList().length ?
+        (
+          <section className={style.listWrapper}>
+            {getPaginatedList().map(({ id, title, image, price, rating }) => (
+              <ProductCard
+                key={id}
+                id={id}
+                title={title}
+                image={image}
+                price={price}
+                currency="€"
+                ratingLabel="Average rating: "
+                rating={rating}
+              />
+            ))
+            }
+          </section >
+        ) :
+        <Spinner msg="Feeding unicorns..." />
+      }
       <Pagination
         offset={offset}
         totalItems={filteredList.length}
@@ -109,3 +116,7 @@ export default function Listing() {
 };
 
 
+/*
+
+  <Spinner message="Loading" />
+*/

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { fetchDataStore } from '../api/fetch-data';
+import { Spinner } from '../components/';
 import style from './product-page.module.scss';
 
 
@@ -53,7 +54,7 @@ export default function Product() {
             <p>{product.description}</p>
           </div>
         </main >
-      ) : null}
+      ) : <Spinner msg="Feeding unicorns..." />}
     </>
   );
 };
