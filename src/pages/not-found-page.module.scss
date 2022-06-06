@@ -1,0 +1,79 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: fit-content;
+  min-height: 100vh;
+  font-size: 1.6rem;
+
+  @include mixin.media-breakpoint(lg) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.8rem;
+  }
+}
+
+.img {
+  max-width: 90vw;
+
+  @include mixin.media-breakpoint(lg) {
+    max-height: 90vh;
+  }
+}
+
+
+.card {
+  text-align: center;
+  color: $primary-color;
+
+  h1 {
+    margin: 5rem 0 2rem 0;
+    @include mixin.font-size(title, mobile);
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(title, desktop);
+      margin: 2rem 0 2rem 0;
+    }
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+}
+
+
+.btn {
+  display: block;
+  height: 4rem;
+  margin: 0 auto;
+  @include mixin.font-size(body, mobile);
+  border-radius: 0.5rem;
+
+  @include mixin.button('back');
+
+  @include mixin.media-breakpoint(md) {
+    height: 5rem;
+    width: 16rem;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+
+  a {
+    color: $secondary-color;
+    @include mixin.font-size(body, mobile);
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(body, desktop);
+    }
+  }
+}

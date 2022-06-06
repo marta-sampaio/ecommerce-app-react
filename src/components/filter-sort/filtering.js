@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { fetchDataStore } from '../api/fetch-data';
+import { fetchDataStore } from '../../api/fetch-data';
+import style from './buttons.module.scss';
 
 
 export default function Filtering({ handleChange }) {
@@ -20,12 +21,12 @@ export default function Filtering({ handleChange }) {
 
   return (
     <div>
-      <div className="select-box-label">Add a filter: </div>
+      <div className={style.label}>Choose a category: </div>
       <select
         onChange={onChange}
         name="categories"
         id="filtering"
-        className="select-box"
+        className={style.select}
       >
         <option value="all">all</option>
         {options.current.map(category => {
@@ -41,6 +42,5 @@ export default function Filtering({ handleChange }) {
       </select>
     </div >
   );
-
 };
 

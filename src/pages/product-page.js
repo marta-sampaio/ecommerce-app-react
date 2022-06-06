@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { fetchDataStore } from '../api/fetch-data';
-import './product-page.css';
+import style from './product-page.module.scss';
 
 
 export default function Product() {
@@ -26,29 +26,29 @@ export default function Product() {
   return (
     <>
       {product ? (
-        <main className="product-page-wrapper" >
+        <main className={style.main}>
           <button
             onClick={back}
             type="button"
-            className="btn-return"
+            className={style.back}
           >
             <span>&#171; </span><span> Go back</span>
           </button>
-          <div className="wrapper-img">
+          <div className={style.wrapper}>
             <img src={product.image} alt={product.title}></img>
           </div >
-          <div className="prod-info">
-            <div className="product-page-rating">Average rating: {product.rating.rate}</div>
-            <h1 className="product-page-title">{product.title}</h1>
-            <div className="product-page-price">{product.price} €</div>
+          <div>
+            <div className={style.rating}>Average rating: {product.rating.rate}</div>
+            <h1 className={style.title}>{product.title}</h1>
+            <div className={style.price}>{product.price} €</div>
             <button
               type="submit"
-              className="product-page-btn"
+              className={style.btn}
             >
               Add to cart
             </button>
           </div>
-          <div className="prod-description">
+          <div className={style.description}>
             <h2>Description</h2>
             <p>{product.description}</p>
           </div>

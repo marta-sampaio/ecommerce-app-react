@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { fetchUser } from '../api/fetch-data';
 import { useUserContext } from '../context/user';
 import routes from '../routes';
-import './login-page.css';
+import style from './login-page.module.scss';
 
 
 export default function Login() {
@@ -44,12 +44,11 @@ export default function Login() {
   };
 
   return (
-    <main className="wrapper-login">
-
+    <main className={style.main}>
       <h1>Account Login</h1>
       <form
         onSubmit={handleSubmit}
-        className="login-form"
+        className={style.form}
       >
         <input
           onChange={handleUserChange}
@@ -57,8 +56,8 @@ export default function Login() {
           name="username"
           value={username}
           aria-label="Username"
-          placeholder="Enter username..."
-          id="username"
+          placeholder="Enter your username"
+          id={style.username}
         />
         <input
           onChange={handlePassChange}
@@ -66,21 +65,21 @@ export default function Login() {
           name="password"
           value={password}
           aria-label="Password"
-          placeholder="Enter password..."
-          id="password"
+          placeholder="Enter your password"
+          id={style.password}
         />
         <button type="submit">Login</button>
       </form >
       <button
         onClick={back}
         type="button"
-        className="btn-return"
+        className={style.back}
       >
         <span>&#171; </span><span> Go back</span>
       </button>
       {errorMsg &&
-        <p className="login-error-msg">Wrong username/password. Please try again.</p>
+        <p className={style.errMsg}>Wrong username/password. Please try again.</p>
       }
-    </main>
+    </main >
   );
 };

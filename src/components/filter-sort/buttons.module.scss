@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixin;
+
+
+.label {
+  margin-bottom: 1rem;
+  color: $primary-color;
+  @include mixin.font-size(body, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+.select {
+  padding: 0.5rem 0;
+  @include mixin.font-size(body, mobile);
+  border-radius: 1.5rem;
+
+  @include mixin.button('light');
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}

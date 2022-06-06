@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './buttons.module.scss';
 
 
 export default function Sorting({ options, handleChange, selected }) {
@@ -8,13 +9,13 @@ export default function Sorting({ options, handleChange, selected }) {
 
   return (
     <div>
-      <div className="select-box-label">Sort by: </div>
+      <div className={style.label}>Sort by: </div>
       <select
         onChange={onChange}
         value={selected}
         name="sorting"
         id="sorting"
-        className="select-box"
+        className={style.select}
       >
         {options.map(option => {
           return (

@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixin;
+
+
+.ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+
+  @include mixin.media-breakpoint(md) {
+    justify-content: center;
+  }
+}
+
+.btn {
+  margin: 2rem 0;
+  width: 5rem;
+  height: 5rem;
+  @include mixin.font-size(body, mobile);
+  border-radius: 50%;
+
+  @include mixin.button('light');
+
+  &:hover {
+    background-color: $active-page-color;
+  }
+
+  @include mixin.media-breakpoint(md) {
+    margin: 2rem;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+#active {
+  font-weight: 700;
+  background-color: $active-page-color;
+}

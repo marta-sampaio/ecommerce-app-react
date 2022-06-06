@@ -1,0 +1,66 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 12rem;
+
+  @include mixin.font-size(footer, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(footer, desktop);
+  }
+}
+
+
+/* =================
+  Profile section
+================= */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome {
+  padding: 0.5rem 0;
+  color: $primary-color;
+}
+
+.username {
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.icon {
+  color: $primary-color;
+  @include mixin.font-size(title, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(title, desktop);
+  }
+}
+
+
+/* =================
+  Login button
+================= */
+.btn {
+  padding: 0.5rem 3.4rem;
+  @include mixin.font-size(footer, mobile);
+
+  border-radius: 1.5rem;
+
+  @include mixin.button('light');
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(footer, desktop);
+  }
+}

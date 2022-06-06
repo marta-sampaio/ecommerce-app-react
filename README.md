@@ -1,10 +1,11 @@
 # Fake Store React App [2022]
 
->Front-end E-Commerce Single-page application (SPA) built with React using Fake Store API.
+>Front-end E-Commerce Single-page application (SPA) built with React using Fake Store API and Fake Users API (https://edit-shop-api.herokuapp.com/api/users).
 
 ## 1. Built With 
 - HTML5
 - CSS3
+- Sass
 - JavaScript
 - React
 
@@ -24,13 +25,15 @@ Project starts running at `localhost:3000`.
 For building a SPA. 
 ### `commitizen` 
 For generating clear and standard commit messages.
+### `sass` 
+For reusable and organized code in SCSS syntax.
 
 ## 4. Routes
-### `/listing`
+### `/listing/`
 Set as the default route. Displays the entire list of products, handles a filter and a sorting dropdown menus and the pagination buttons.
 ### `/login`
 The Login route handles the submission of a costumer's log in credentials. Manages the state of the logged in object user which is shared by React Context with the rest of the application.
-### `/product/:id([+-]?[0-9]+)` 
+### `/product/` 
 The Product route displays a previously selected product. It takes a product ID parameter which is an integer. No functionalities have been implemented at the present moment.
 ### `*` 
 404 Route handles nonexistent routes. It is redirected to `/404` and displays a not found message.

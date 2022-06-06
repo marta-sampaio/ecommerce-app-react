@@ -1,0 +1,120 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+.wrapper {
+  margin: 0 0.1rem;
+  text-align: center;
+  text-decoration: none;
+  @include mixin.font-size(body, mobile);
+
+  @include mixin.media-breakpoint(sm) {
+    margin: 1rem;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Image
+================= */
+.imgWrapper {
+  height: 25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+
+  @include mixin.media-breakpoint(sm) {
+    height: 20rem;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  &:hover {
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    transform: scale(1.2);
+    box-shadow: 0 0 5px $shadow-color;
+  }
+}
+
+
+.tooltip {
+  position: relative;
+
+  &:before {
+    /* takes the data-text attribute of the parent element and uses it as the content. */
+    content: attr(data-text);
+
+    position: absolute;
+    z-index: 100;
+    display: none;
+
+    /* vertically center */
+    bottom: 100%;
+    transform: translateY(-50%);
+    /* horizontally center */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: max-content;
+    max-width: 30rem;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: $primary-color;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid $primary-color;
+    border-radius: 0.5rem;
+  }
+
+  &:hover:before {
+    display: block;
+  }
+}
+
+
+/* =================
+  Title
+================= */
+.title {
+  color: $primary-color;
+  @include mixin.font-size(body, mobile);
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Price
+================= */
+.price {
+  padding: 0.8rem 0;
+  color: $secondary-color;
+
+}
+
+
+/* =================
+  Rating
+================= */
+.rating {
+  color: $primary-color;
+}

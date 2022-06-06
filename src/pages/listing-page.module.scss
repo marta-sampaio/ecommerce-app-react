@@ -1,0 +1,88 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+.main {
+  margin: 3rem 1rem;
+  @include mixin.font-size(body, mobile);
+
+  @include mixin.media-breakpoint(sm) {
+    margin: 3rem 6rem;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Header 
+================= */
+.header {
+  margin-bottom: 3rem;
+
+  @include mixin.media-breakpoint(sm) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+    color: $primary-color;
+    font-family: $title-font-family;
+    @include mixin.font-size(title, mobile);
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(title, desktop);
+    }
+  }
+}
+
+
+.btnWrapper {
+  @include mixin.media-breakpoint(sm) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include mixin.media-breakpoint(xl) {
+    margin-right: 4rem;
+  }
+
+  >:first-child {
+    @include mixin.media-breakpoint(sm) {
+      margin-right: 2.5rem;
+      margin-left: 5rem;
+    }
+  }
+
+  select {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    @include mixin.media-breakpoint(sm) {
+      width: 14rem;
+    }
+  }
+}
+
+
+/* =================
+  Products' list
+================= */
+.listWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90vw, 1fr));
+  gap: 5rem;
+  margin-bottom: 2rem;
+
+  @include mixin.media-breakpoint(sm) {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}

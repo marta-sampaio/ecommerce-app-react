@@ -1,0 +1,154 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+.main {
+  flex-grow: 1;
+  display: grid;
+  align-self: center;
+  margin: 3rem 1rem;
+  text-align: center;
+  @include mixin.font-size(body, mobile);
+
+  @include mixin.media-breakpoint(sm) {
+    grid-template-columns: minmax(0, 1fr) 45%;
+    align-items: center;
+    justify-items: center;
+    max-width: 70vw;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Go back button
+================= */
+.back {
+  justify-self: left;
+  @include mixin.font-size(body, mobile);
+  @include mixin.button('back');
+
+  @include mixin.media-breakpoint(sm) {
+    grid-column: 1/-1;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Image
+================= */
+.wrapper {
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+
+  @include mixin.media-breakpoint(lg) {
+    width: 80%;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    object-fit: contain;
+  }
+}
+
+
+/* =================
+  Rating
+================= */
+.rating {
+  padding-bottom: 1rem;
+  color: $primary-color-lighter;
+  @include mixin.font-size(body, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Title
+================= */
+.title {
+  padding-bottom: 1.5rem;
+  color: $primary-color;
+  @include mixin.font-size(title, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(title, desktop);
+  }
+}
+
+
+/* =================
+  Price
+================= */
+.price {
+  padding-bottom: 2rem;
+  color: $secondary-color;
+  @include mixin.font-size(subtitle, mobile);
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(subtitle, desktop);
+  }
+}
+
+
+/* =================
+  Add to cart button
+================= */
+.btn {
+  padding: 0.8rem 4rem;
+  @include mixin.font-size(body, mobile);
+  border-radius: 1.5rem;
+
+  @include mixin.button('dark');
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(body, desktop);
+  }
+}
+
+
+/* =================
+  Description 
+================= */
+.description {
+  margin-top: 2rem;
+  text-align: justify;
+
+  @include mixin.media-breakpoint(sm) {
+    grid-column: 1/-1;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: $primary-color;
+    @include mixin.font-size(subtitle, mobile);
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(subtitle, desktop);
+    }
+
+  }
+
+  p {
+    color: $primary-color-lighter;
+    line-height: 1.5;
+  }
+}

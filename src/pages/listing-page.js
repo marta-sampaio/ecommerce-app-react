@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import routes from '../routes';
 import { ProductCard, Filtering, Sorting, Pagination } from '../components/';
-import './listing-page.css';
 import { fetchDataStore } from '../api/fetch-data';
+import style from './listing-page.module.scss';
 
 
 export default function Listing() {
@@ -14,9 +14,9 @@ export default function Listing() {
   const [selectedSorting, setSelectedSorting] = useState('--');
   const sortOptions = [
     { id: 1, label: '--', value: '--' },
-    { id: 2, label: 'Lowest Price', value: 'asc.price' },
-    { id: 3, label: 'Highest Price', value: 'desc.price' },
-    { id: 4, label: 'User rating', value: 'desc.rating' }
+    { id: 2, label: 'lowest price', value: 'asc.price' },
+    { id: 3, label: 'highest price', value: 'desc.price' },
+    { id: 4, label: 'user rating', value: 'desc.rating' }
   ];
   const [currentPage, setCurrentPage] = useState(1);
   const offset = 4;
@@ -69,11 +69,10 @@ export default function Listing() {
 
 
   return (
-    <main className="wrapper-listing">
-      {console.log(prodList)}
-      <div className="header-listing">
+    <main className={style.main}>
+      <section className={style.header}>
         <h1>Find something you like</h1>
-        <div className="wrapper-btn-listing">
+        <div className={style.btnWrapper}>
           <Filtering
             handleChange={handleFilter}
           />
@@ -83,8 +82,8 @@ export default function Listing() {
             handleChange={handleSort}
           />
         </div>
-      </div>
-      <div className="wrapper-grid-list">
+      </section>
+      <section className={style.listWrapper}>
         {getPaginatedList().map(({ id, title, image, price, rating }) => (
           <ProductCard
             key={id}
@@ -98,7 +97,7 @@ export default function Listing() {
           />
         ))
         }
-      </div >
+      </section >
       <Pagination
         offset={offset}
         totalItems={filteredList.length}

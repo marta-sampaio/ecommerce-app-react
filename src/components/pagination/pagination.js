@@ -1,5 +1,5 @@
 import React from 'react';
-import './pagination.css';
+import style from './pagination.module.scss';
 
 
 export default function Pagination({ offset, totalItems, handleClick, currentPage }) {
@@ -12,14 +12,14 @@ export default function Pagination({ offset, totalItems, handleClick, currentPag
 
 
   return (
-    <nav className="wrapper-pagination">
-      <ul>
+    <nav>
+      <ul className={style.ul}>
         {pageNumbers.map(number => (
           <li key={number}>
             <button
               onClick={() => handleClick(number)}
-              className="btn-pagination"
-              id={number === currentPage ? 'active-pg' : null}
+              className={style.btn}
+              id={number === currentPage ? `${style.active}` : null}
             >
               {number}
             </button>

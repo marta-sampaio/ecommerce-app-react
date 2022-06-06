@@ -1,0 +1,74 @@
+@use 'sass:map';
+@use 'sass:math';
+@use './variables' as *;
+@use './functions' as function;
+
+
+/* =================
+  Media queries
+================= */
+@mixin media-breakpoint($breakpoint) {
+  @media only screen and (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+
+/* =================
+  Themes
+================= */
+@mixin theme($name) {
+  @if $name =='dark' {
+    color: rgb(255, 255, 255);
+    background-color: $secondary-color;
+  }
+
+  @if $name =='light' {
+    color: $secondary-color;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+
+/* =================
+  Typography
+================= */
+/* dynamic font sizing based on screen size: mobile vs. desktop */
+@mixin font-size($text-type, $screen-size) {
+  @if $text-type =='body' {
+    font-size: map.get($body-font-size, $screen-size);
+  }
+
+  /* estimating font size for titles and subtitles based on screen size and body font size*/
+  @else {
+    $factor: function.getDeepMap($sizing-factors, $screen-size, $text-type);
+    font-size: map.get($body-font-size, $screen-size) * $factor;
+  }
+}
+
+
+/* =================
+  Buttons
+================= */
+@mixin button($name) {
+  font-family: $body-font-family;
+  cursor: pointer;
+
+  @if $name =='dark' {
+    font-weight: 400;
+    border: none;
+    @include theme($name)
+  }
+
+  @if $name =='light' {
+    font-weight: 400;
+    border: solid 1px $secondary-color;
+    @include theme($name)
+  }
+
+  @if $name =='back' {
+    font-weight: 700;
+    border: none;
+    @include theme('light')
+  }
+}

@@ -1,0 +1,179 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixin;
+
+
+/* =================
+  Global style
+================= */
+footer {
+  display: grid;
+  justify-items: center;
+  height: 100%;
+  padding: 3rem 2rem;
+  color: rgb(255, 255, 255);
+  @include mixin.font-size(footer, mobile);
+  text-align: center;
+  background-color: $primary-color;
+
+  @include mixin.media-breakpoint(md) {
+    grid-template-areas:
+      "social brand help newsletter"
+      "copyrights copyrights copyrights copyrights";
+    column-gap: 3rem;
+    text-align: left;
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(footer, desktop);
+  }
+
+  h2 {
+    @include mixin.font-size(footer, mobile);
+    letter-spacing: 0.2rem;
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(footer, desktop);
+    }
+  }
+}
+
+.imgs,
+.brand,
+.help,
+.newsletter {
+  margin-bottom: 2.5rem;
+}
+
+.ul {
+  list-style: none;
+
+  li {
+    padding-top: 0.75rem;
+
+    a {
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+
+/* =================
+  Social-icons section
+================= */
+.imgs {
+  max-width: 30rem;
+
+  @include mixin.media-breakpoint(md) {
+    grid-area: social;
+    max-width: none;
+  }
+}
+
+.logo {
+  max-width: 50%;
+}
+
+.social {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+
+  @include mixin.media-breakpoint(md) {
+    justify-content: flex-start;
+  }
+}
+
+
+.icon {
+  font-style: normal;
+  font-size: 2.2rem;
+  color: $secondary-color;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 0.5rem;
+    transform: scale(1.5);
+  }
+
+  @include mixin.media-breakpoint(md) {
+    padding-right: 1rem;
+  }
+}
+
+
+/* =================
+  Brand section
+================= */
+.brand {
+  @include mixin.media-breakpoint(md) {
+    grid-area: brand;
+  }
+}
+
+
+/* =================
+  Help section
+================= */
+.help {
+  @include mixin.media-breakpoint(md) {
+    grid-area: help;
+  }
+}
+
+
+/* =================
+  Newsletter section
+================= */
+.newsletter {
+  @include mixin.media-breakpoint(md) {
+    grid-area: newsletter;
+  }
+
+  p {
+    padding: 0.75rem 0;
+  }
+}
+
+
+.form {
+  display: flex;
+  justify-content: center;
+
+  @include mixin.media-breakpoint(md) {
+    justify-content: left;
+  }
+
+  input {
+    padding: 0.5em 0.75em;
+    @include mixin.font-size(footer, mobile);
+    border: 0;
+
+    @include mixin.media-breakpoint(lg) {
+      @include mixin.font-size(footer, desktop);
+    }
+  }
+
+  button {
+    padding: 0.5em 0.75em;
+    color: $secondary-color;
+    @include mixin.font-size(footer, mobile);
+    font-weight: 700;
+    border: none;
+    cursor: pointer
+  }
+
+  @include mixin.media-breakpoint(lg) {
+    @include mixin.font-size(footer, desktop);
+  }
+}
+
+
+/* =================
+  Copyrights section
+================= */
+.copyrights {
+  @include mixin.media-breakpoint(md) {
+    grid-area: copyrights;
+    text-align: center;
+  }
+}
