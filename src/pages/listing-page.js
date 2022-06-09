@@ -43,8 +43,7 @@ export default function Listing() {
 
 
   function handleSort(value, selectedSorting) {
-    const order = value.split('.')[0];
-    const option = value.split('.')[1];
+    const [order, option] = value.split('.');
 
     if (option === 'price') {
       order === 'asc' ? setFilteredList([...filteredList].sort((a, b) => a[option] - b[option])) : setFilteredList([...filteredList].sort((a, b) => b[option] - a[option]));
@@ -54,7 +53,6 @@ export default function Listing() {
 
     setSelectedSorting(selectedSorting);
   };
-
 
 
   function getPaginatedList() {
@@ -69,8 +67,6 @@ export default function Listing() {
 
 
   return (
-
-
     <main className={style.main}>
       <section className={style.header}>
         <h1>Find something you like</h1>
@@ -114,9 +110,3 @@ export default function Listing() {
     </main >
   );
 };
-
-
-/*
-
-  <Spinner message="Loading" />
-*/
