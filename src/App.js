@@ -22,8 +22,7 @@ function App() {
         <Switch>
           <Route exact path={`${routes.Product}:id([+-]?[0-9]+)`} children={<Product />} />
           <Route path={routes.Login} children={<Login />} />
-          <Route path={routes.Listing} children={<Listing />} />
-          <Route path={`${routes.Listing}:filter`} children={<Listing />} />
+          <Route path={`${routes.Listing}:filter?`} children={<Listing />} />
           <Route exact path='/'>
             <Redirect to={routes.Listing} />
           </Route>

@@ -54,7 +54,7 @@ export default function Product() {
             <p>{product.description}</p>
           </div>
         </main >
-      ) : <Spinner msg="Feeding unicorns..." />}
+      ) : <Spinner msg="Thanks for your patience" />}
     </>
   );
 };
