@@ -3,15 +3,15 @@ import { useUserContext } from '../../context/user';
 import routes from '../../routes';
 import image from '../../assets/logo-1.png';
 import style from './header.module.scss';
+import { useCallback } from 'react';
 
 
 export default function Header() {
   const { user, setUser } = useUserContext();
 
-  function handleClick() {
-    setUser();
-    sessionStorage.removeItem('USER_SSKEY');
-  };
+  const handleClick = useCallback(() => {
+    setUser(null);
+  }, [setUser]);
 
   const location = useLocation();
 

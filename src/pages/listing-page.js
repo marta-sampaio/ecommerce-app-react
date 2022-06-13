@@ -1,15 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import routes from '../routes';
 import { ProductCard, Filtering, Sorting, Pagination, Spinner } from '../components/';
 import { fetchDataStore } from '../api/fetch-data';
 import style from './listing-page.module.scss';
+import { useParams } from 'react-router-dom';
 
 
 export default function Listing() {
-
+  const { filter } = useParams();
   const history = useHistory();
-  const prodList = useRef([]);
+  const [productList, setProductList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [selectedSorting, setSelectedSorting] = useState('--');
   const sortOptions = [
@@ -25,7 +26,7 @@ export default function Listing() {
   useEffect(() => {
     fetchDataStore('')
       .then(json => {
-        prodList.current = json;
+        setProductList(json);
         setFilteredList(json);
       })
       .catch(err => { console.log('Promisse rejected.', err.message) });
@@ -34,13 +35,15 @@ export default function Listing() {
 
 
   function handleFilter(selectedFilter) {
-    selectedFilter === 'all' ? setFilteredList(prodList.current) : setFilteredList(prodList.current.filter(product => product.category === selectedFilter));
-
-    setSelectedSorting('--');
-    setCurrentPage(1);
     history.push(`${routes.Listing}${selectedFilter}`);
   };
-
+  
+  useEffect(() => {
+    filter === 'all' ? setFilteredList(productList) : setFilteredList(productList.filter(product => product.category === filter));
+  
+    setSelectedSorting('--');
+    setCurrentPage(1);
+  }, [filter, productList])
 
   function handleSort(value, selectedSorting) {
     const [order, option] = value.split('.');
@@ -73,6 +76,7 @@ export default function Listing() {
         <div className={style.btnWrapper}>
           <Filtering
             handleChange={handleFilter}
+            value={filter || "all"}
           />
           <Sorting
             options={sortOptions}

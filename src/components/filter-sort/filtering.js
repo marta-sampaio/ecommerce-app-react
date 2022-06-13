@@ -3,7 +3,7 @@ import { fetchDataStore } from '../../api/fetch-data';
 import style from './buttons.module.scss';
 
 
-export default function Filtering({ handleChange }) {
+export default function Filtering({ handleChange, value }) {
 
   const options = useRef([]);
 
@@ -27,6 +27,7 @@ export default function Filtering({ handleChange }) {
         name="categories"
         id="filtering"
         className={style.select}
+        value={value}
       >
         <option value="all">all</option>
         {options.current.map(category => {
