@@ -38,12 +38,14 @@ export default function Listing() {
     history.push(`${routes.Listing}${selectedFilter}`);
   };
   
+
   useEffect(() => {
-    filter === 'all' ? setFilteredList(productList) : setFilteredList(productList.filter(product => product.category === filter));
+    filter === 'all' || filter === undefined ? setFilteredList(productList) : setFilteredList(productList.filter(product => product.category === filter));
   
     setSelectedSorting('--');
     setCurrentPage(1);
   }, [filter, productList])
+
 
   function handleSort(value, selectedSorting) {
     const [order, option] = value.split('.');

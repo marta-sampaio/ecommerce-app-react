@@ -15,8 +15,8 @@ export default function Filtering({ handleChange, value }) {
     , []);
 
 
-  function onChange(e) {
-    handleChange(e.target.value);
+  function onChange({target:{value}}) {
+    handleChange(value);
   };
 
   return (
