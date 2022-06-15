@@ -77,9 +77,11 @@ export default function Login() {
       >
         <span>&#171; </span><span> Go back</span>
       </button>
+      <section className={style.errSection}>
       {errorMsg &&
         <p className={style.errMsg}>Wrong username/password. Please try again.</p>
       }
+      </section>
     </main >
   );
 };

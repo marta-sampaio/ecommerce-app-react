@@ -32,16 +32,14 @@ $title-font-family: 'Abril Fatface', serif;
 
 /* body font sizing*/
 $body-font-size: (
-  mobile: 1.4rem,
-  desktop: 1.5rem,
+  mobile: 1.5rem,
+  desktop: 1.6rem,
 );
 
 /* increment sizing factors for titles and subtitles based on the body font size*/
 $sizing-factors: (
   mobile: (title: 1.3,
-    subtitle: 1.25,
-    footer: 0.8),
+    subtitle: 1.25),
   desktop: (title: 1.96,
-    subtitle: 1.6,
-    footer: 0.85),
+    subtitle: 1.6),
 );

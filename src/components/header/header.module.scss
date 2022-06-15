@@ -12,10 +12,10 @@
   padding: 0 2rem;
   height: 12rem;
 
-  @include mixin.font-size(footer, mobile);
+  @include mixin.font-size(body, mobile);
 
   @include mixin.media-breakpoint(lg) {
-    @include mixin.font-size(footer, desktop);
+    @include mixin.font-size(body, desktop);
   }
 }
 
@@ -54,13 +54,13 @@
 ================= */
 .btn {
   padding: 0.5rem 3.4rem;
-  @include mixin.font-size(footer, mobile);
+  @include mixin.font-size(body, mobile);
 
   border-radius: 1.5rem;
 
   @include mixin.button('light');
 
   @include mixin.media-breakpoint(lg) {
-    @include mixin.font-size(footer, desktop);
+    @include mixin.font-size(body, desktop);
   }
 }
