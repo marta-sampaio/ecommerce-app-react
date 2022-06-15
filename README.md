@@ -8,14 +8,14 @@
 - [3. Dependencies](#dependencies)
 - [4. Routes](#routes)
 
-## 1. Built With 
+## <a name="built-with">1. Built With</a>
 - HTML5
 - CSS3
 - Sass
 - JavaScript
 - [React](https://reactjs.org/) - JS library
 
-## 2. Getting Started
+## <a name="getting-started">2. Getting Started</a>
 1. Run the following command in root directory to install all the dependencies of `package.json` file. 
   ```
   $npm install
@@ -26,7 +26,7 @@
   ```
 Project starts running at `localhost:3000`.
 
-## 3. Dependencies
+## <a name="dependencies">3. Dependencies</a>
 ### `react-router-dom` 
 For building a SPA. 
 ### `commitizen` 
@@ -34,7 +34,7 @@ For generating clear and standard commit messages.
 ### `sass` 
 For reusable and organized code in SCSS syntax.
 
-## 4. Routes
+## <a name="routes">4. Routes</a>
 ### `/listing/`
 Set as the default route. Displays the entire list of products, handles a filter and a sorting dropdown menus and the pagination buttons.
 ### `/login`
