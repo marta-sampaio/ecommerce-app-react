@@ -1,13 +1,19 @@
 # Fake Store React App [2022]
 
->Front-end E-Commerce Single-page application (SPA) built with React using Fake Store API and Fake Users API (https://edit-shop-api.herokuapp.com/api/users).
+>Front-end E-Commerce Single-page application (SPA) built with React using [Fake Store API](https://fakestoreapi.com/) and [Fake Users API](https://edit-shop-api.herokuapp.com/api/users).
+
+## Table of contents
+- [1. Built With](#built-with)
+- [2. Getting Started](#getting-started)
+- [3. Dependencies](#dependencies)
+- [4. Routes](#routes)
 
 ## 1. Built With 
 - HTML5
 - CSS3
 - Sass
 - JavaScript
-- React
+- [React](https://reactjs.org/) - JS library
 
 ## 2. Getting Started
 1. Run the following command in root directory to install all the dependencies of `package.json` file. 
